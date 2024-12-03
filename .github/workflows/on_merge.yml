@@ -1,0 +1,26 @@
+name: "On Merge"
+
+on:
+    push:
+        branches: [ main, dev ]
+
+jobs:
+    develop:
+        name: "on_merge Dev"
+        if: ${{ github.ref == 'refs/heads/dev' }}
+        uses: ./.github/workflows/merge_deploy.yml
+        permissions:
+            contents: read
+        secrets: inherit
+        with:
+            environment_name: dev
+    
+    prod:
+        name: "on_merge Prod"
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: ./.github/workflows/merge_deploy.yml
+        permissions:
+            contents: read
+        secrets: inherit
+        with:
+            environment_name: prod
