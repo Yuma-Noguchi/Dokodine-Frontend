@@ -21,25 +21,22 @@ provider "google" {
 resource "google_artifact_registry_repository" "dokodine-frontend-repo" {
   location      = var.region
   repository_id = var.gar_repo
-  description   = "Docker repository for FastAPI app"
+  description   = "Docker repository for Next.js app"
   format        = "DOCKER"
 }
 
-resource "google_cloud_run_service" "dokodine-frontend" {
+resource "google_cloud_run_v2_service" "dokodine-frontend" {
   name     = var.service_name
   location = var.region
 
   template {
-    spec {
-      containers {
-        image = "gcr.io/cloudrun/hello" # Placeholder image
-      }
+    containers {
+      image = "gcr.io/cloudrun/hello" # Placeholder image
     }
   }
 
   traffic {
     percent         = 100
-    latest_revision = true
   }
 
   lifecycle {
