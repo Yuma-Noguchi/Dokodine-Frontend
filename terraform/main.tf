@@ -38,17 +38,11 @@ resource "google_cloud_run_v2_service" "dokodine-frontend" {
   traffic {
     percent         = 100
   }
-
-  lifecycle {
-    ignore_changes = [
-      template[0].spec[0].containers[0].image,
-    ]
-  }
 }
 
 resource "google_cloud_run_service_iam_member" "public_access" {
-  service  = google_cloud_run_service.dokodine-frontend.name
-  location = google_cloud_run_service.dokodine-frontend.location
+  service  = google_cloud_run_v2_service.dokodine-frontend.name
+  location = google_cloud_run_v2_service.dokodine-frontend.location
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
