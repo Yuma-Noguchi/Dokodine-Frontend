@@ -18,14 +18,14 @@ provider "google" {
   region  = var.region
 }
 
-resource "google_artifact_registry_repository" "dokodine-backend-repo" {
+resource "google_artifact_registry_repository" "dokodine-frontend-repo" {
   location      = var.region
   repository_id = var.gar_repo
   description   = "Docker repository for FastAPI app"
   format        = "DOCKER"
 }
 
-resource "google_cloud_run_service" "dokodine-backend" {
+resource "google_cloud_run_service" "dokodine-frontend" {
   name     = var.service_name
   location = var.region
 
@@ -50,8 +50,8 @@ resource "google_cloud_run_service" "dokodine-backend" {
 }
 
 resource "google_cloud_run_service_iam_member" "public_access" {
-  service  = google_cloud_run_service.dokodine-backend.name
-  location = google_cloud_run_service.dokodine-backend.location
+  service  = google_cloud_run_service.dokodine-frontend.name
+  location = google_cloud_run_service.dokodine-frontend.location
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
