@@ -34,10 +34,6 @@ resource "google_cloud_run_v2_service" "dokodine-frontend" {
       image = "gcr.io/cloudrun/hello" # Placeholder image
     }
   }
-
-  traffic {
-    percent         = 100
-  }
 }
 
 resource "google_cloud_run_service_iam_member" "public_access" {
