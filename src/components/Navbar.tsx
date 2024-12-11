@@ -32,7 +32,7 @@ const Navbar = () => {
         {!user && (
           <Link href="/">
             <div className="text-2xl font-bold ml-4 sm:ml-16">
-              LLM App Template
+              Dokodine
             </div>
           </Link>
         )}

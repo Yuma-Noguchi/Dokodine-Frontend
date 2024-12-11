@@ -30,7 +30,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
       <div className="flex flex-grow h-screen">
         {shouldShowSidebarAndNavbar && <Sidebar />}
         <main className="flex flex-grow flex-col max-w-full">
-          {shouldShowSidebarAndNavbar && <Navbar />}
+          {<Navbar />}
           <div
             className={cn(
               shouldShowSidebarAndNavbar

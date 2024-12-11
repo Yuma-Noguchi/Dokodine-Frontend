@@ -79,7 +79,7 @@ const Sidebar: React.FC = () => {
                   router.push('/');
                 }}
               >
-                <h2 className="text-lg font-bold pl-2">App Name</h2>
+                <h2 className="text-lg font-bold pl-2">Dokodine</h2>
               </Button>
             )}
             <Button
